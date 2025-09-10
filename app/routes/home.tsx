@@ -1,5 +1,8 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { Navbar } from "~/Navbar";
+import ProductDetails from "./productDetails";
+import ShoppingCart from "./shoppingCart";
+import { useLoaderData } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +11,19 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+export async function loader() {
+  const response = await fetch('https://dummyjson.com/products');
+  console.log("response: " + response.json);
+  return response.json();
+}
+
 export default function Home() {
-  return <Welcome />;
+  const data = useLoaderData();
+  return (
+  <div>
+  <Navbar />
+  <ProductDetails/>
+  <ShoppingCart/>
+  </div>
+  );
 }
