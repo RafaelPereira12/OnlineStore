@@ -1,8 +1,7 @@
+import ProductCard from "~/components/common/ProductCard";
 import type { Route } from "./+types/home";
-import { Navbar } from "~/Navbar";
-import ProductDetails from "./productDetails";
-import ShoppingCart from "./shoppingCart";
 import { useLoaderData } from "react-router";
+import ProductList from "~/components/containers/ProductList";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -19,30 +18,12 @@ export async function loader() {
 
 export default function Home() {
   const data = useLoaderData();
-  console.log(data);
+  
   return (
   <div>
    {data &&
-    data.products.map((product : any, index : number) => {
-      return(
-        <div>
-          <div>
-            {product.id}
-          </div>
-          <div>
-            {product.title}
-          </div>
-          <div>
-            {product.price}
-          </div>
-          <img src={product.images[0]} alt={product.title} style={{ width: 200 }} />
-        </div>
-      )
-    }
-    )
-    }
-  
-  
+      <ProductList data={data} products={data.products}/>
+   }
   </div>
   );
 }
