@@ -13,17 +13,36 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader() {
   const response = await fetch('https://dummyjson.com/products');
-  console.log("response: " + response.json);
+  
   return response.json();
 }
 
 export default function Home() {
   const data = useLoaderData();
+  console.log(data);
   return (
   <div>
-  <Navbar />
-  <ProductDetails/>
-  <ShoppingCart/>
+   {data &&
+    data.products.map((product : any, index : number) => {
+      return(
+        <div>
+          <div>
+            {product.id}
+          </div>
+          <div>
+            {product.title}
+          </div>
+          <div>
+            {product.price}
+          </div>
+          <img src={product.images[0]} alt={product.title} style={{ width: 200 }} />
+        </div>
+      )
+    }
+    )
+    }
+  
+  
   </div>
   );
 }
