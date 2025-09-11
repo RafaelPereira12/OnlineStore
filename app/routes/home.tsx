@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import type { Route } from "./+types/home";
-import { useLoaderData } from "react-router";
 import ProductList from "~/components/containers/ProductList";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router";
 import { useGlobalContext } from "~/context/globalContext";
 
 export function meta({}: Route.MetaArgs) {
@@ -11,10 +11,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-// export async function loader() {
-//   const response = await fetch('https://dummyjson.com/products?limit=0');
-//   return response.json();
-// }
 
 export async function loader() {
   const [productsList, categories] = await Promise.all([
@@ -38,32 +34,34 @@ export default function Home() {
         products: string[],];
     categories: string[];
   };
-  const { category } = useGlobalContext();
+  const { category, sortBy, order, setCategory } = useGlobalContext();
   const [response, setResponse] = useState(Object);
+
+
+
   useEffect(() => {
-   if(category != "") {
-     async function fetchProducts() {
-      try {
+    async function fetchProducts() {
+       if(category != "" && sortBy == "") {
         const response = await fetch(`https://dummyjson.com/products/category/${category}`);
         setResponse(await response.json());
-      } catch {
-        
+        } else if(sortBy != "" ) {
+        const response = await fetch(`https://dummyjson.com/products?sortBy=${sortBy}&order=${order}`);
+        setResponse(await response.json());
+        setCategory("");
+        }
       }
-    }
-    fetchProducts();
-  }
-}, [category])
+      fetchProducts();
+}, [category, sortBy, order])
 
   return (
-  <div>
-  {
-  response?.products?.length && category !== ""
-    ? <ProductList data={response.products} products={response.products} categories={categories} />
-    : data?.products?.length 
-      ? <ProductList data={data.products} products={data.products} categories={categories} />
-      : null
-}
-    
-  </div>
+    <div>
+      {
+        response?.products?.length && category !== "" || response?.products?.length && sortBy !== "" 
+          ? <ProductList data={response.products} products={response.products} categories={categories} />
+          : data?.products?.length 
+          ? <ProductList data={data.products} products={data.products} categories={categories} />
+          : null
+        }
+    </div>
   );
 }

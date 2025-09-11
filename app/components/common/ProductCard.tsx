@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import Wrapper from "../base/Wrapper";
-import { useGlobalContext } from "~/context/globalContext";
 
 export default function ProductCard( {title, price, image, id} : ProductCardProps) {
 

@@ -1,7 +1,8 @@
-import Wrapper from "../base/Wrapper";
 import CategoryList from "../common/CategoryList";
 import Pagination from "../common/Pagination";
 import ProductCard from "../common/ProductCard";
+import Wrapper from "../base/Wrapper";
+import ProductListDropdown from "../common/ProductListDropdown";
 import { useGlobalContext } from "~/context/globalContext";
 
 export default function ProductList( data: ProductListProps) {
@@ -13,10 +14,12 @@ export default function ProductList( data: ProductListProps) {
 
     const pageNumbers: number[] = Array.from(
     { length: Math.ceil(data.products.length / itemsPerPage) },
-    (_, i) => i + 1
-);
+    (_, i) => i + 1);
+
+    
     return(
         <Wrapper>
+            <ProductListDropdown />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {currentItems &&

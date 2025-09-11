@@ -1,14 +1,8 @@
 import { useLoaderData } from "react-router";
 import Wrapper from "~/components/base/Wrapper";
 
-
-
-
 export default function ProductDetails() {
     const data = useLoaderData();    
- 
-
-
     return(
         <Wrapper>
             <img src={data.images[0]} alt={data.title} />
