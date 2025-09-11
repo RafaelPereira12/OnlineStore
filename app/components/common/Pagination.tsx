@@ -22,7 +22,7 @@ export default function Pagination( length: PaginationProps) {
 
                     <button onClick={() => setCurrentPage(length.length.length )}
                     >
-                    "A"
+                    {'>>'}
                     </button>
                     </div>
        </Wrapper>

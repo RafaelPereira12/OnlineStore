@@ -18,25 +18,34 @@ export default function ProductList( data: ProductListProps) {
 
     
     return(
-        <Wrapper>
-            <ProductListDropdown />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {currentItems &&
-                        currentItems.map((product : any, index : number) => {
-                            return(
-                            <div key={index}>
-                                <ProductCard title={product.title} price={product.price} image={product.images} id={product.id} key={product.id}/>
-                            </div>
-                            )       
-                        }
-                    )
-                    }
-                </div>
-                <CategoryList categories={data.categories}/>
-            </div>
-                <Pagination length={pageNumbers}/>
-       </Wrapper>
+    <Wrapper>
+  <div className="flex justify-between items-center mb-4">
+    <ProductListDropdown />
+  </div>
+
+  <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-8">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {currentItems &&
+        currentItems.map((product: any, index: number) => (
+          <ProductCard
+            title={product.title}
+            price={product.price}
+            image={product.images}
+            id={product.id}
+            key={product.id}
+          />
+        ))}
+    </div>
+
+    <aside className="hidden lg:block">
+      <CategoryList categories={data.categories} />
+    </aside>
+  </div>
+
+  <div className="mt-8 flex justify-center">
+    <Pagination length={pageNumbers} />
+  </div>
+</Wrapper>
     )
 }
 

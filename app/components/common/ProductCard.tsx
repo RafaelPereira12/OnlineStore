@@ -3,22 +3,27 @@ import Wrapper from "../base/Wrapper";
 
 export default function ProductCard( {title, price, image, id} : ProductCardProps) {
 
-    return(
-        <Link  to={`/productDetails/${id}`} className="flex flex-col w-[336px] h-[387px]  bg-red-500">
-            <Wrapper>
-                <img src={image[0]} alt={title} className="w-full h-[336px]" />
-                <div className="flex flex-col w-full justify-between">
-                    <div className=" justify-self-end">
-                        {title}
-                    </div>
-                    <div>
-                        {"$" + price}
-                    </div>
-                </div>
-                <div>{id}</div>
-            </Wrapper>
-        </Link>
-    )
+  return (
+    <Link
+      to={`/productDetails/${id}`}
+      className="flex flex-col bg-white  overflow-hidden hover:shadow-xl transition-shadow duration-300 w-full max-w-xs mx-auto"
+    >
+      <Wrapper>
+        <div className="w-full h-64 md:h-72 lg:h-80 overflow-hidden">
+          <img
+            src={image[0]}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+
+        <div className="p-4 flex flex-col justify-between flex-1">
+          <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
+          <p className="mt-2 text-gray-600 font-medium">${price}</p>
+        </div>
+      </Wrapper>
+    </Link>
+  );
 }
 
 type ProductCardProps = {

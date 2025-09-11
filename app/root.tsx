@@ -1,18 +1,18 @@
 import {
-  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
 } from "react-router";
 import React from "react";
-
-
 import type { Route } from "./+types/root";
 import "./app.css";
 import { Navbar } from "./components/base/Navbar";
 import { Provider } from "./provider";
+import "./app.css"; 
+import "@fontsource/bebas-neue/400.css"; 
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },

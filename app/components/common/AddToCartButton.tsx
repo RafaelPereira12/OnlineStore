@@ -27,7 +27,7 @@ export default function AddToCartButton( product: AddToCartButtonProps) {
         <Wrapper>
             <button
             onClick={() => addToCart(product)}
-            className="mt-2 px-2 py-1 bg-blue-500 text-white rounded"
+            className="w-[60%] bg-gray-800 text-white uppercase text-sm font-semibold py-2 rounded hover:bg-gray-900 active:scale-95 transition-transform"
         >
             Add to Cart
             </button>
