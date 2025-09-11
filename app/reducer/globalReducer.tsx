@@ -10,7 +10,7 @@ import {
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case SET_CART:
-      return { ...state, cart: action.payload };
+      return { ...state, cart: action.payload ?? [] };
 
     case SET_CATEGORY:
       return { ...state, category: action.payload };

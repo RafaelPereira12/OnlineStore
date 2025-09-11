@@ -17,15 +17,11 @@ export default function AddToCartButton( product: AddToCartButtonProps) {
         }
 
         setCart(newCart); 
-        console.log('newCart: ', newCart);
+        localStorage.setItem("cart", JSON.stringify(cart));
         };
     
 
-    const removeFromCart = (id: number) => {
-    setCart((prev: any) => prev.filter((p: any) => p.id !== id));
-    };
-
-    const clearCart = () => setCart([]);
+   
 
     return(
         <Wrapper>

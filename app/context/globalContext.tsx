@@ -23,22 +23,23 @@ type Product = {
   id: number;
   title: string;
   price: number;
+  image: string;
   quantity?: number; 
 };
 
 const GlobalContext = React.createContext<{
-  cart: Product[],
+  cart: Product[];
   category: string;
   currentPage: number;
-  order : string;
+  order: string;
   productId: number;
   sortBy: string;
-  setCart: Function;
-  setCategory: Function;
-  setCurrentPage: Function;
-  setOrder: Function;
-  setProductId: Function;
-  setSortBy: Function;
+  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
+  setCategory: (category: string) => void;
+  setProductId: (id: number) => void;
+  setCurrentPage: (page: number) => void;
+  setOrder: (order: string) => void;
+  setSortBy: (sortBy: string) => void;
 }>({
   cart: [],
   category: "",
