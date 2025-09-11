@@ -1,15 +1,15 @@
-import { SET_SLIDE, SET_SEASON_DETAILS, SET_VIEW_EPISODES } from "../actions";
+import { SET_PRODUCT_ID, SET_CURRENT_PAGE, SET_CATEGORY } from "../actions";
 
 const reducer = (state: any, action: any) => {
   switch (action.type) {
-    // case SET_SLIDE:
-    //   return { ...state, currentSlide: action.payload };
-    // case SET_SEASON_DETAILS:
-    //   return { ...state, seasonDetails: action.payload };
-    // case SET_VIEW_EPISODES:
-    //   return { ...state, viewEpisodes: action.payload };
-    // default:
-    //   throw new Error(`No matching action type ${action.type}`);
+     case SET_PRODUCT_ID:
+          return { ...state, productId: action.payload};
+    case SET_CURRENT_PAGE:
+      return { ...state, currentPage: action.payload };
+    case SET_CATEGORY:
+      return { ...state, category: action.payload };
+    default:
+      throw new Error(`No matching action type ${action.type}`);
   }
 };
 

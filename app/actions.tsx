@@ -1,3 +1,3 @@
-export const SET_SLIDE = "SET_SLIDE";
-export const SET_SEASON_DETAILS = "SET_SEASON_DETAILS";
-export const SET_VIEW_EPISODES = " SET_VIEW_EPISODES";
+export const SET_PRODUCT_ID = "SET_PRODUCT_ID";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_CATEGORY = "SET_CATEGORY";

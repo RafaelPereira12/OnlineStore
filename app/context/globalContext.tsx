@@ -1,60 +1,67 @@
-import { SET_SLIDE, SET_SEASON_DETAILS, SET_VIEW_EPISODES } from "../actions";
+import { 
+  SET_CATEGORY, 
+  SET_CURRENT_PAGE, 
+  SET_PRODUCT_ID, 
+} from "../actions";
 import React, { useCallback, useContext, useReducer } from "react";
 import reducer from "../reducer/globalReducer";
 
+
 const initialState = {
-  seasonDetails: {
-    number: 0,
-    id: 0,
-  },
-  currentSlide: 0,
-  viewEpisodes: false,
+  category: "",
+  currentPage: 1,
+  order: "asc",
+  productId: 0,
+  sortBy: "title",
 };
 
 const GlobalContext = React.createContext<{
-  // setNextSlide: Function;
-  // setPreviousSlide: Function;
-  // setSeasonDetails: Function;
-  // currentSlide: number;
-  // viewEpisodes: false;
-  // setViewEpisodes: Function;
+  category: string;
+  currentPage: number;
+  order : string;
+  productId: number;
+  sortBy: string;
+  setCategory: Function;
+  setCurrentPage: Function;
+  setOrder: Function;
+  setProductId: Function;
+  setSortBy: Function;
 }>({
-  // setNextSlide: () => {},
-  // setPreviousSlide: () => {},
-  // setSeasonDetails: () => {},
- 
-  // currentSlide: 0,
-  // viewEpisodes: false,
-  // setViewEpisodes: () => {},
+  category: "",
+  currentPage: 1,
+  order: "asc", 
+  productId: 0,
+  sortBy: "title",
+  setCategory: () => {},
+  setProductId: () => {},
+  setCurrentPage: () => {},
+  setOrder: () => {},
+  setSortBy: () => {},
 });
 
 export const GlobalProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // const setSeasonDetails = useCallback((seasonDetails: Season[]) => {
-  //   dispatch({ type: SET_SEASON_DETAILS, payload: seasonDetails });
-  // }, []);
+   const setProductId = useCallback((productId : number) => {
+    dispatch({type: SET_PRODUCT_ID, payload: productId})
+  }, []);
 
-  // const setPreviousSlide = useCallback((currentSlide: number) => {
-  //   dispatch({ type: SET_SLIDE, payload: currentSlide });
-  // }, []);
+  const setCurrentPage = useCallback((currentPage : number) => {
+    dispatch({type: SET_CURRENT_PAGE, payload: currentPage})
+  }, []);
 
-  // const setNextSlide = useCallback((currentSlide: number) => {
-  //   dispatch({ type: SET_SLIDE, payload: currentSlide });
-  // }, []);
+  const setCategory = useCallback((category : string) => {
+    dispatch({type: SET_CATEGORY, payload: category})
+  }, []);
 
-  // const setViewEpisodes = useCallback((viewEpisodes: boolean) => {
-  //   dispatch({ type: SET_VIEW_EPISODES, payload: viewEpisodes });
-  // }, []);
 
   return (
     <GlobalContext.Provider
       value={{
         ...state,
-        // setNextSlide,
-        // setPreviousSlide,
-        // setSeasonDetails,
-        // setViewEpisodes,
+         setProductId,
+         setCurrentPage,
+         setCategory
       }}
     >
       {children}
