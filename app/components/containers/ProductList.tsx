@@ -26,7 +26,7 @@ export default function ProductList( data: ProductListProps) {
                         currentItems.map((product : any, index : number) => {
                             return(
                             <div key={index}>
-                            <ProductCard title={product.title} price={product.price} image={product.images} id={product.id} key={product.id}/>
+                                <ProductCard title={product.title} price={product.price} image={product.images} id={product.id} key={product.id}/>
                             </div>
                             )       
                         }
@@ -35,7 +35,6 @@ export default function ProductList( data: ProductListProps) {
                 </div>
                 <CategoryList categories={data.categories}/>
             </div>
-
                 <Pagination length={pageNumbers}/>
        </Wrapper>
     )

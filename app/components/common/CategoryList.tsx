@@ -6,15 +6,17 @@ import { useGlobalContext } from "~/context/globalContext";
 
 export default function CategoryList({ categories }: CategoryListProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const { setCategory } = useGlobalContext();
+  const { setCategory, setCurrentPage } = useGlobalContext();
 
   const handleChange = (category: string) => {
     setSelectedCategory((prev) => {
       if (prev === category) {
         setCategory("");
+        setCurrentPage(1);
         return null;
       } else {
         setCategory(category);
+        setCurrentPage(1);
         return category;
       }
     });

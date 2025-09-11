@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router";
 import Wrapper from "~/components/base/Wrapper";
+import AddToCartButton from "~/components/common/AddToCartButton";
 
 export default function ProductDetails() {
     const data = useLoaderData();    
@@ -19,6 +20,11 @@ export default function ProductDetails() {
                     <text>Product Details</text>
                     {data.description}
             </div>
+        <AddToCartButton key={data.id}
+          id={data.id}
+          title={data.title}
+          price={data.price}
+          image={data.images}/>
         </Wrapper>
     )
     

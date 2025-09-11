@@ -19,8 +19,15 @@ const initialState = {
   sortBy: "",
 };
 
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  quantity?: number; 
+};
+
 const GlobalContext = React.createContext<{
-  cart: any[],
+  cart: Product[],
   category: string;
   currentPage: number;
   order : string;

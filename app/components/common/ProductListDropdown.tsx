@@ -12,7 +12,7 @@ export default function ProductListDropdown() {
     const [field, dir] = value.split("-");
     setSortBy(field);
     setOrder(dir);
-    setCurrentPage(0);
+    setCurrentPage(1);
     };
 
     return(
